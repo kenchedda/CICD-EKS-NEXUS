@@ -87,11 +87,11 @@ pipeline {
                                 nexusUrl: '18.188.81.130:8081', 
                                 nexusVersion: 'nexus3', 
                                 protocol: 'http', 
-                                repository: 'http://18.188.81.130:8081/repository/mavenrepo/', 
+                                repository: 'mavenrepo', 
                                 version: '1.0.0'
 
                     } 
         }
-            }   
+        }   
 }
 }
