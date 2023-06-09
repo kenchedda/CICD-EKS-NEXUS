@@ -12,7 +12,7 @@ pipeline{
                 
                 script{
                     
-                    git branch: 'main', url: 'https://github.com/vikash-kumar01/mrdevops_javaapplication.git'
+                    git branch: 'main', credentialsId: 'github', url: 'https://github.com/kenchedda/CICD-EKS-NEXUS.git'
                 }
             }
         }
@@ -52,7 +52,7 @@ pipeline{
                 
                 script{
                     
-                    withSonarQubeEnv(credentialsId: 'sonar-api') {
+                    withSonarQubeEnv(credentialsId: 'sonar') {
                         
                         sh 'mvn clean package sonar:sonar'
                     }
@@ -66,7 +66,7 @@ pipeline{
                     
                     script{
                         
-                        waitForQualityGate abortPipeline: false, credentialsId: 'sonar-api'
+                        waitForQualityGate abortPipeline: false, credentialsId: 'sonar'
                     }
                 }
             }
