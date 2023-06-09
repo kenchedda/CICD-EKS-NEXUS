@@ -78,7 +78,7 @@ pipeline {
                             [
                                 artifactId: 'springboot',
                                 classifier: '',
-                                file: 'target/*.jar',
+                                file: 'target/springboot-1.0.0.jar',
                                 type: 'jar'
                                 ]
                             ], 
