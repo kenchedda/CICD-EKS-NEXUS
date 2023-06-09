@@ -1,4 +1,4 @@
-pipeline{
+pipeline {
     
     agent {
         label "build"
@@ -70,6 +70,28 @@ pipeline{
                     }
                 }
             }
+            stage('nexus_uploader') {
+                steps{
+                    script {
+                        nexusArtifactUploader artifacts:
+                         [
+                            [
+                                artifactId: 'springboot',
+                                classifier: '',
+                                file: 'target/*.jar',
+                                type: 'jar'
+                                ]
+                            ], 
+                                credentialsId: 'nexus_cred', 
+                                groupId: 'com.example', 
+                                nexusUrl: '18.188.81.130:8081', 
+                                nexusVersion: 'nexus3', 
+                                protocol: 'http', 
+                                repository: 'http://18.188.81.130:8081/repository/mavenrepo/', 
+                                version: '1.0.0'
+
+                    } 
         }
-        
+            }   
+}
 }
