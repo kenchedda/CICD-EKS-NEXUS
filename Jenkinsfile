@@ -122,9 +122,7 @@ pipeline {
        steps {
          script {
             echo '<--------------- Helm Deploy Started --------------->'
-            sh 'helm create uberap'
-            sh 'cp deployment.yaml /home/ubuntu/uberap/templates'
-            sh 'cp service.yaml /home/ubuntu/uberap/templates'
+            
             sh 'helm package uberap'
 
             sh 'helm install uberap /home/ubuntu/uberapp-0.1.0.tgz'
