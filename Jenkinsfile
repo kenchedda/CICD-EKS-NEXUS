@@ -95,6 +95,28 @@ pipeline {
 
                     } 
         }
-        }   
+     
+       }
+
+                        stage('Docker image build'){
+                    steps {
+                        script {
+                            sh 'docker image build -t $JOB_NAME:v1.$BUILD_ID .'
+                            sh 'docker image tag $JOB_NAME:v1.$BUILD_ID kenappiah/$JOB_NAME:$BUILD_ID'
+                            sh 'docker image tag $JOB_NAME:v1.$BUILD_ID kenappiah/$JOB_NAME:latest1'
+                        }
+                    }
+            
+                }
+            stage ('publish docker image') {
+                steps{
+                    script{
+                        withCredentials([string(credentialsId: 'dockersec', variable: 'docker_hub_cred')]) {
+                            sh 'docker login -u kenappiah -p ${docker_hub_cred}'
+                            sh 'docker image push kenappiah/$JOB_NAME:latest1'
+                    }
+                }
+            }                
+        }    
 }
 }
