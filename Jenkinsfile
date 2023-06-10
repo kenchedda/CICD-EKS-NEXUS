@@ -123,9 +123,9 @@ pipeline {
          script {
             echo '<--------------- Helm Deploy Started --------------->'
             
-            sh 'helm package uberap'
+           
 
-            sh 'helm install uberap /home/ubuntu/workspace/e2e/uberap-0.1.0.tgz'
+            sh 'helm install uberap /home/ubuntu/uberap-0.1.0.tgz
         
             echo '<--------------- Helm deploy Ends --------------->'
          }
