@@ -125,7 +125,7 @@ pipeline {
             
            
 
-            sh 'helm install uberap /home/ubuntu/uberap-0.1.0.tgz'
+            sh 'helm install uberap /home/ubuntu/ken-0.1.0.tgz'
         
             echo '<--------------- Helm deploy Ends --------------->'
          }
