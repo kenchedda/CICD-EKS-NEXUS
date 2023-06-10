@@ -123,9 +123,8 @@ pipeline {
          script {
             echo '<--------------- Helm Deploy Started --------------->'
             
-           
-
-            sh 'helm install uberap /home/ubuntu/alina-0.1.0.tgz'
+        
+            sh 'helm install alina /home/ubuntu/alina-0.1.0.tgz'
         
             echo '<--------------- Helm deploy Ends --------------->'
          }
